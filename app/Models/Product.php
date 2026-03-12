@@ -8,7 +8,8 @@ class Product extends Model
 {
     protected $fillable = [
         'name',
-        'price'
+        'price',
+        'amount'
     ];
 
     public function transactions(){

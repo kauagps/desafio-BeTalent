@@ -22,5 +22,5 @@ scripts:
 
       pm.environment.set(\"token\", jsonData.access_token);"
     language: text/javascript
-order: 1773344450141
-examples: ./.resources\Login.resources\examples
+order: 1062877487352583
+examples: ./.resources\Login-1.resources\examples

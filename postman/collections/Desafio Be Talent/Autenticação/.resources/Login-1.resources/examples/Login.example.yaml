@@ -1,4 +1,6 @@
 $kind: http-example
+description: Este endpoint autentica o usuário e retorna um Bearer Token. Envie
+  o e-mail e senha cadastrados via Seeder.
 request:
   url: "{{base_url}}/login"
   method: POST
@@ -22,11 +24,11 @@ response:
     connection: close
     x-powered-by: PHP/8.5.3
     cache-control: no-cache, private
-    date: Thu, 12 Mar 2026 19:48:05 GMT
+    date: Thu, 12 Mar 2026 20:53:57 GMT
     content-type: application/json
     access-control-allow-origin: http://localhost:3000
     access-control-allow-credentials: "true"
   body:
     type: json
-    content: '{"access_token":"2|YJQS9cK5ssEwQolw1HJnkZGJma310ocdKrDfVAB43ce89df1","token_type":"Bearer"}'
-order: 1773344967769
+    content: '{"access_token":"4|siPXUGRZqAMYVkFMffL1jVPZgHVtKQ83mbftJsGubbae7672","token_type":"Bearer"}'
+order: 1773348839379
