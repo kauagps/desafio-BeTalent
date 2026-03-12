@@ -1,3 +1,52 @@
+# 📋 Documento de Requisitos: API Multi-Gateway
+
+## 1. Objetivo do Projeto
+Desenvolver uma API RESTful para gerenciamento de pagamentos que suporte múltiplos provedores (gateways), com lógica de contingência (fallback) baseada em prioridade, atendendo aos critérios do **Nível 2** do desafio BeTalent.
+
+---
+
+## 2. Requisitos Funcionais (RF)
+
+| ID | Requisito | Descrição |
+| :--- | :--- | :--- |
+| **RF01** | **Autenticação de Usuário** | O sistema deve permitir login via e-mail/senha e proteger rotas sensíveis usando Laravel Sanctum. |
+| **RF02** | **Gestão de Produtos** | CRUD para armazenar `nome` e `preço`. O valor da venda deve ser calculado no backend. |
+| **RF03** | **Configuração de Gateways** | Cadastro de gateways com `nome`, `prioridade` e `chave_api`. |
+| **RF04** | **Processamento de Venda** | Receber `client_id` e uma lista de produtos/quantidades. Calcular o total e registrar a transação. |
+| **RF05** | **Lógica de Fallback** | Tentar o pagamento no Gateway de prioridade 1. Em caso de falha, tentar o de prioridade 2 automaticamente. |
+| **RF06** | **Histórico de Transações** | Listar vendas realizadas, indicando status (pago/falhou) e qual gateway finalizou a operação. |
+
+---
+
+## 3. Requisitos Não Funcionais (RNF)
+
+* **RNF01 - Extensibilidade:** A arquitetura deve permitir a adição de novos gateways apenas criando novas classes de serviço (Modularidade).
+* **RNF02 - Segurança:** Dados sensíveis de cartão (número, CVV) **não** podem ser persistidos no banco de dados.
+* **RNF03 - Persistência:** Utilização de banco de dados relacional MySQL.
+* **RNF04 - Tratamento de Erros:** Respostas de erro padronizadas em JSON caso todos os gateways falhem.
+
+---
+
+## 4. Arquitetura de Dados (Database)
+
+A estrutura de dados foi desenhada para suportar relações N:N (Muitos para Muitos) entre transações e produtos:
+
+* **users:** Autenticação administrativa.
+* **clients:** Dados dos compradores.
+* **products:** Catálogo de itens disponíveis.
+* **gateways:** Configurações de prioridade e acesso às APIs externas.
+* **transactions:** Registro principal da venda e status final.
+* **transaction_products:** Tabela pivot que registra o preço e a quantidade de cada produto no ato da compra.
+
+---
+
+## 5. Planejamento
+
+1.  **Setup:** Instalação do Laravel, Breeze API e configuração do `.env`.
+2.  **Modelagem:** Criação de Migrations, Models e Seeders para Gateways/Produtos.
+3.  **Core Logic:** Implementação do Service de Pagamento, Integração HTTP com Mocks e Fallback.
+4.  **Finalização:** Documentação das rotas (Postman), README final e testes de fluxo.
+
 # Teste Prático Back-end BeTalent
 
 [BeTalent Tech](https://betalent.tech/) é uma software house que conecta *talentos incríveis* a negócios, para criar e desenvolver produtos e serviços digitais eficientes.
