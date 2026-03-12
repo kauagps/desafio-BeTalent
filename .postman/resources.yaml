@@ -1,0 +1,7 @@
+# Use this workspace to collaborate
+workspace:
+  id: 3d6c6152-0620-48d5-84fb-36f8a5545e63
+
+localResources:
+  collections:
+    - ..\multigateways_payment_api.json

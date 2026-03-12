@@ -1,0 +1,11 @@
+$kind: collection
+name: Desafio Be Talent
+variables:
+  base_url: ""
+  token: ""
+auth:
+  - id: 7f250923-1fe4-4442-8ade-6d03ee8609c2
+    type: bearer
+    name: Bearer Token
+    credentials:
+      token: "{{token}}"

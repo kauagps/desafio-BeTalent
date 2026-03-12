@@ -1,0 +1,26 @@
+$kind: http-request
+name: Login
+description: Este endpoint autentica o usuário e retorna um Bearer Token. Envie
+  o e-mail e senha cadastrados via Seeder.
+url: "{{base_url}}/login"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{\r
+
+    \    \"email\": \"admin@teste.com\",\r
+
+    \    \"password\": \"password\"\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "var jsonData = pm.response.json();\r
+
+      pm.environment.set(\"token\", jsonData.access_token);"
+    language: text/javascript
+order: 1773344450141
+examples: ./.resources\Login.resources\examples
