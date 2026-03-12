@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Clients;
+use App\Models\Product;
 use App\Models\Transactions;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TransactionsController extends Controller
 {
@@ -28,7 +31,42 @@ class TransactionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'client_id' => 'required|exists:clients,id',
+            'products' => 'required|array|min:1',
+            'products.*.id' => 'required|exists:products,id',
+            'products.*.amount' => 'required|integer|min:1'
+        ]);
+
+        return DB::transaction(function () use ($validated) {
+
+            $totalAmount = 0;
+            $pivotData = [];
+
+            foreach ($validated['products'] as $item){
+                $product = Product::find($item['id']);
+
+                $totalAmount += $product->price * $item['amount'];
+
+                $pivotData[$product->id] = [
+                    'quantity' => $item['amount'],
+                    'unit_price' => $product->price
+                ];
+            }
+
+            $transaction = Transactions::create([
+                'client_id' => $validated['client_id'],
+                'total_amount' => $totalAmount,
+                'status' => 'pending'
+            ]);
+
+            TODO:
+
+            return response()->json([
+                'message' => 'Transação registrada com sucesso!!!',
+                'transaction' => $transaction->load('products'),
+            ], 201);
+        });
     }
 
     /**

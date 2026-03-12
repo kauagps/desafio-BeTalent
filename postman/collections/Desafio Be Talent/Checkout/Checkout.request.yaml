@@ -1,0 +1,28 @@
+$kind: http-request
+name: Checkout
+url: "{{base_url}}/checkout"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{\r
+
+    \    \"client_id\":1,\r
+
+    \    \"products\":[\r
+
+    \        {\r
+
+    \            \"id\":1,\r
+
+    \            \"amount\":2\r
+
+    \        }\r
+
+    \    ]\r
+
+    }"
+order: 1773352287343
+examples: ./.resources\Checkout.resources\examples
