@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Clients;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class ClientsController extends Controller
@@ -12,7 +13,7 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Clients::all(), 200);
     }
 
     /**
@@ -28,7 +29,23 @@ class ClientsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $validated = $request->validate ([
+                'name'=>'required|string|max:255',
+                'email'=>'required|email|unique:clients,email',
+                'cpf'=>'required|string|size:11|unique:clients,cpf',
+            ]);
+
+            $client = Clients::create($validated);
+
+            return response()->json([
+                'message'=>'Cliente cadastrado com sucesso!!!',
+                'data' => $client
+            ], 201);
+
+        } catch (\Iluminate\Validation\ValidationException $e){
+            return response()->json(['errors'=>$e->errors()], 422);
+        }
     }
 
     /**

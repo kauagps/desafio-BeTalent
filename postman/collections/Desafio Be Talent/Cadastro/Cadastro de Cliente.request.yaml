@@ -1,0 +1,21 @@
+$kind: http-request
+name: Cadastro de Cliente
+description: Este endpoint cadastra clientes. Tente enviar (**name**,
+  **email**|unique, **cpf**|unique|size:11)
+url: "{{base_url}}/clients"
+method: POST
+headers:
+  Accept: application/json
+body:
+  type: json
+  content: "{\r
+
+    \    \"name\": \"João Silva\",\r
+
+    \    \"email\": \"João@email.com\",\r
+
+    \    \"cpf\": \"12345678901\"\r
+
+    }"
+order: 928177039720839
+examples: ./.resources\Cadastro de Cliente.resources\examples
