@@ -11,10 +11,11 @@ Desenvolver uma API RESTful para gerenciamento de pagamentos que suporte múltip
 | :--- | :--- | :--- |
 | **RF01** | **Autenticação de Usuário** | O sistema deve permitir login via e-mail/senha e proteger rotas sensíveis usando Laravel Sanctum. |
 | **RF02** | **Gestão de Produtos** | CRUD para armazenar `nome` e `preço`. O valor da venda deve ser calculado no backend. |
-| **RF03** | **Configuração de Gateways** | Cadastro de gateways com `nome`, `prioridade` e `chave_api`. |
-| **RF04** | **Processamento de Venda** | Receber `client_id` e uma lista de produtos/quantidades. Calcular o total e registrar a transação. |
-| **RF05** | **Lógica de Fallback** | Tentar o pagamento no Gateway de prioridade 1. Em caso de falha, tentar o de prioridade 2 automaticamente. |
-| **RF06** | **Histórico de Transações** | Listar vendas realizadas, indicando status (pago/falhou) e qual gateway finalizou a operação. |
+| **RF03** | **Gestão de Cliente** | CRUD para armazenar `nome` e `email`. |
+| **RF04** | **Configuração de Gateways** | Cadastro de gateways com `nome`, `prioridade` e `chave_api`. |
+| **RF05** | **Processamento de Venda** | Receber `client_id` e uma lista de produtos/quantidades. Calcular o total e registrar a transação. |
+| **RF06** | **Lógica de Fallback** | Tentar o pagamento no Gateway de prioridade 1. Em caso de falha, tentar o de prioridade 2 automaticamente. |
+| **RF07** | **Histórico de Transações** | Listar vendas realizadas, indicando status (pago/falhou) e qual gateway finalizou a operação. |
 
 ---
 
