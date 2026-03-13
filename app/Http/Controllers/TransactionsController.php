@@ -72,6 +72,14 @@ class TransactionsController extends Controller
 
             $transaction->products()->attach($pivotData);
 
+            foreach ($transaction->products as $product){
+                if ($product->amount < $product->pivot->quantity) {
+                    return response()->json([
+                        'message'=>"Estoque insuficiente para o produto: {$product->name}. Disponivel: {$product->amount}"
+                    ], 400);
+                }
+            }
+
             try {
                 $transaction->load('client');
 
@@ -80,11 +88,18 @@ class TransactionsController extends Controller
                     'cvv' => $validated['cvv']
                 ]);
 
-                $transaction->update([
-                    'status' => 'paid',
-                    'external_id' => $paymentResponse['external_id'],
-                    'gateway_id' => $paymentResponse['gateway_database_id']
-                ]);
+                DB::transaction(function () use ($transaction, $paymentResponse) {
+                    $transaction->update([
+                        'status' => 'paid',
+                        'external_id' => $paymentResponse['external_id'],
+                        'gateway_id' => $paymentResponse['gateway_database_id']
+                    ]);
+                    
+                    foreach ($transaction->products as $product){
+                        $quantityBought = (int) $product->pivot->quantity;
+                        $product->decrement('amount', $quantityBought);
+                    }
+                });
 
                 return response()->json([
                     'message' => 'Pagamento aprovado!!',
