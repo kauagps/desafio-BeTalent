@@ -1,0 +1,5 @@
+$kind: http-request
+name: Lista de Transações
+url: ""
+method: GET
+order: 2860521850445989

@@ -2,4 +2,4 @@ $kind: http-request
 name: GET Products
 url: "{{base_url}}/products"
 method: GET
-order: 4094752839807703
+order: 1773431148453

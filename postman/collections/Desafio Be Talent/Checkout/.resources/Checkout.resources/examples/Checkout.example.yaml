@@ -21,7 +21,11 @@ request:
 
       \        }\r
 
-      \    ]\r
+      \    ],\r
+
+      \    \"cardNumber\":\"1234567890123456\",\r
+
+      \    \"cvv\":\"010\"\r
 
       }"
 response:
@@ -32,12 +36,15 @@ response:
     connection: close
     x-powered-by: PHP/8.5.3
     cache-control: no-cache, private
-    date: Thu, 12 Mar 2026 21:57:57 GMT
+    date: Fri, 13 Mar 2026 17:01:29 GMT
     content-type: application/json
     access-control-allow-origin: http://localhost:3000
     access-control-allow-credentials: "true"
   body:
     type: json
-    content: '{"message":"Transa\u00e7\u00e3o registrada com
-      sucesso!!!","transaction":{"client_id":1,"total_amount":399.8,"status":"pending","updated_at":"2026-03-12T21:57:57.000000Z","created_at":"2026-03-12T21:57:57.000000Z","id":4,"products":[]}}'
-order: 1773352715514
+    content: '{"message":"Pagamento aprovado via Gateway
+      1","transaction":{"client_id":1,"total_amount":399.8,"status":"paid","updated_at":"2026-03-13T17:01:29.000000Z","created_at":"2026-03-13T17:01:29.000000Z","id":6,"external_id":"5a498c60-3770-4b16-b6b8-252f51fa2080","gateway_id":1,"client":{"id":1,"name":"Jo\u00e3o
+      Silva","email":"Jo\u00e3o@email.com","cpf":"12345678901","created_at":"2026-03-12T21:16:36.000000Z","updated_at":"2026-03-12T21:16:36.000000Z"},"products":[{"id":1,"name":"Curso
+      de
+      laravel","price":"199.90","amount":0,"created_at":"2026-03-12T20:47:23.000000Z","updated_at":"2026-03-12T20:47:23.000000Z","pivot":{"transaction_id":6,"product_id":1,"quantity":2,"unit_price":"199.90","created_at":"2026-03-13T17:01:29.000000Z","updated_at":"2026-03-13T17:01:29.000000Z"}}]}}'
+order: 1773421320350

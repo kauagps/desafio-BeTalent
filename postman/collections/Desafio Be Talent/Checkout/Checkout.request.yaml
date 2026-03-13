@@ -1,5 +1,7 @@
 $kind: http-request
 name: Checkout
+description: Este endpoint realiza checkouts. Tente enviar (client_id, products
+  \[id, amount\], card_number, cvv)
 url: "{{base_url}}/checkout"
 method: POST
 headers:
