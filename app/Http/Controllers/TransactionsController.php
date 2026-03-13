@@ -83,11 +83,11 @@ class TransactionsController extends Controller
                 $transaction->update([
                     'status' => 'paid',
                     'external_id' => $paymentResponse['external_id'],
-                    'gateway_id' => $paymentResponse['gateway'] === 'Gateway 1' ? 1 : 2
+                    'gateway_id' => $paymentResponse['gateway_database_id']
                 ]);
 
                 return response()->json([
-                    'message' => 'Pagamento aprovado via ' . $paymentResponse['gateway'],
+                    'message' => 'Pagamento aprovado!!',
                     'transaction' => $transaction->load('products'),
                 ], 201);
             } catch (\Exception $e) {

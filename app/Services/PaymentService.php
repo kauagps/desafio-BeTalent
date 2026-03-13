@@ -1,56 +1,43 @@
 <?php
 namespace App\Services;
 
-use Illuminate\Support\Facades\Http;
+use App\Models\Gateways; 
 use Exception;
 
-class PaymentService{
-    private $url1 = 'http://localhost:3001/transactions';
-    private $url2 = 'http//localhost:3002/transacoes';
+class PaymentService {
 
-    public function processPayment($transaction, $cardData){
+    public function processPayment($transaction, $cardData) {
         
-        try {
-            $response1 = Http::timeout(5)->post($this->url1, [
-                'amount' => $transaction->total_amount * 100,
-                'name' => $transaction->client->name,
-                'email' => $transaction->client->email,
-                'cardNumber' => $cardData['cardNumber'],
-                'cvv' => $cardData['cvv'],
-            ]);
-
-            if ($response1->successful()){
-                return [
-                    'success' => true,
-                    'gateway' => 'Gateway 1',
-                    'external_id' => $response1->json('id')
-                ];
+        $gatewaysDoBanco = Gateways::where('is_active', true)
+                                   ->orderBy('priority', 'asc')
+                                   ->get();
+        
+        foreach ($gatewaysDoBanco as $gatewayModel) {
+            try {
+                
+                $adapter = $this->getAdapter($gatewayModel->name);
+                
+                
+                $result = $adapter->pay($transaction, $cardData);
+                
+                
+                $result['gateway_database_id'] = $gatewayModel->id;
+                
+                return $result;
+            } catch (Exception $e) {
+                continue;
             }
-        } catch (Exception $e) { }
+        }
 
-        try {
-            $response2 = Http::timeout(5)
-                ->withHeaders([
-                    'Gateway-Auth-Token' => 'tk_f2198cc671b5289fa856',
-                    'Gateway-Auth-Secret' => '3d15e8ed6131446ea7e3456728b1211f'
-                ])
-                ->post($this->url2, [
-                    'valor' => $transaction->total_amount * 100,
-                    'nome' => $transaction->client->name,
-                    'email' => $transaction->client->email,
-                    'numeroCartao' => $cardData['cardNumber'],
-                    'cvv' => $cardData['cvv'],
-                ]);
-            
-            if ($response2->successful()){
-                return [
-                    'success' => true,
-                    'gateway' => 'Gateway 2',
-                    'external_id' => $response2->json('id')
-                ];
-            }
-        } catch (Exception $e) { }
+        throw new Exception("Nenhum gateway conseguiu processar o pagamento.");
+    }
 
-        throw new Exception("Falha ao processar pagamento em todos os gateways!!!");
+    private function getAdapter($name) {
+        
+        return match($name) {
+            'Gateway 1' => new \App\Gateways\GatewayOne(),
+            'Gateway 2' => new \App\Gateways\GatewayTwo(),
+            default => throw new Exception("Gateway [$name] não implementado no código."),
+        };
     }
 }
