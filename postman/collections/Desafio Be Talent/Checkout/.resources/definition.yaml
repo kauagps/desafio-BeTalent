@@ -1,3 +1,4 @@
 $kind: collection
-name: Checkout
-order: 1637240454250495
+description: Aqui esta localizado a principal requisição que realiza as
+  transações do sistema.
+order: 3000

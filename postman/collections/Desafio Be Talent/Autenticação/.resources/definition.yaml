@@ -1,3 +1,3 @@
 $kind: collection
-name: Autenticação
-order: 1878924833325055
+description: Aqui esta localizado a requisição de login de usuário.
+order: 4000

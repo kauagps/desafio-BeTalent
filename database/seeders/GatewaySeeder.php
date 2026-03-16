@@ -12,7 +12,7 @@ class GatewaySeeder extends Seeder
     {
         // Criando o Gateway A (Maior Prioridade)
         Gateways::create([
-            'name' => 'Gateway A',
+            'name' => 'Gateway 1',
             'priority' => 1,
             'api_key' => 'chave-teste-a', // Se o mock exigir
             'is_active' => true
@@ -20,7 +20,7 @@ class GatewaySeeder extends Seeder
 
         // Criando o Gateway B (Menor Prioridade)
         Gateways::create([
-            'name' => 'Gateway B',
+            'name' => 'Gateway 2',
             'priority' => 2,
             'api_key' => 'chave-teste-b',
             'is_active' => true

@@ -12,7 +12,7 @@ class GatewayTwo implements GatewayInterface {
                 'Gateway-Auth-Token' => 'tk_f2198cc671b5289fa856',
                 'Gateway-Auth-Secret' => '3d15e8ed6131446ea7e3456728b1211f'
             ])
-            ->post('http://localhost:3002/transacoes', [
+            ->post('http://host.docker.internal:3002/transacoes', [
                 'valor'        => $transaction->total_amount * 100,
                 'nome'         => $transaction->client->name,
                 'email'        => $transaction->client->email,
@@ -26,7 +26,7 @@ class GatewayTwo implements GatewayInterface {
 
         return [
             'success' => true,
-            'external_id' => $response->json('id'),
+            'external_id' => $response->json('id')?? uniqid(),
             'gateway_name' => 'Gateway 2'
         ];
     }

@@ -1,7 +1,4 @@
 $kind: http-request
-name: Checkout
-description: Este endpoint realiza checkouts. Tente enviar (client_id, products
-  \[id, amount\], card_number, cvv)
 url: "{{base_url}}/checkout"
 method: POST
 headers:
@@ -9,22 +6,6 @@ headers:
   Content-Type: application/json
 body:
   type: json
-  content: "{\r
-
-    \    \"client_id\":1,\r
-
-    \    \"products\":[\r
-
-    \        {\r
-
-    \            \"id\":1,\r
-
-    \            \"amount\":2\r
-
-    \        }\r
-
-    \    ]\r
-
-    }"
-order: 1773352287343
-examples: ./.resources\Checkout.resources\examples
+  content: ""
+examples: ./.resources/Checkout.resources/examples
+order: 1000

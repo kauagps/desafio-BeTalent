@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::post('/checkout', [TransactionsController::class, 'store']);
+
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -20,8 +22,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('clients', ClientsController::class);
 
     Route::apiResource('transactions', TransactionsController::class);
-
-    Route::post('/checkout', [TransactionsController::class, 'store']);
 
     Route::post('/logout', [AuthController::class, 'logout']);
 });

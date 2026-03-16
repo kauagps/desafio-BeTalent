@@ -6,7 +6,7 @@ use Exception;
 
 class GatewayOne implements GatewayInterface {
     public function pay($transaction, array $cardData) {
-        $response = Http::timeout(5)->post('http://localhost:3001/transactions', [
+        $response = Http::timeout(5)->post('http://host.docker.internal:3001/transactions', [
             'amount'     => $transaction->total_amount * 100, // Centavos
             'name'       => $transaction->client->name,
             'email'      => $transaction->client->email,
@@ -20,7 +20,7 @@ class GatewayOne implements GatewayInterface {
 
         return [
             'success' => true,
-            'external_id' => $response->json('id'),
+            'external_id' => $response->json('id') ?? uniqid(),
             'gateway_name' => 'Gateway 1'
         ];
     }

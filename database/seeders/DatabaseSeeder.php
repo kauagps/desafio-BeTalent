@@ -8,19 +8,19 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+    
     use WithoutModelEvents;
 
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
-
         User::factory()->create([
             'name' => 'Admin Teste',
             'email' => 'admin@teste.com',
             'password' => bcrypt('password')
+        ]);
+
+        $this->call([
+            GatewaySeeder::class,
         ]);
     }
 }

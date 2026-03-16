@@ -1,0 +1,592 @@
+{
+  "info": {
+    "_postman_id": "6f8acea8-eae3-48cb-91ce-f15c7b879856",
+    "name": "Desafio Be Talent",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "30267600"
+  },
+  "item": [
+    {
+      "name": "Listagens",
+      "item": [
+        {
+          "name": "Lista de Produtos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/products",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Lista de Transações",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Lista de usuarios",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Grupo de requisições de listagens"
+    },
+    {
+      "name": "Cadastro",
+      "item": [
+        {
+          "name": "Cadastro de Produtos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/products",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Cadastro de Produtos",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Curso de Laravel\",\r\n    \"price\": 55.5,\r\n    \"amount\": 50\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/products",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "products"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "connection",
+                  "value": "close",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.5.3",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "date",
+                  "value": "Thu, 12 Mar 2026 20:52:29 GMT",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:3000",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "access-control-allow-credentials",
+                  "value": "true",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "body": "{\"message\":\"Produto Cadastrado com Sucesso!!! \",\"data\":{\"name\":\"Curso de Laravel\",\"price\":55.5,\"amount\":50,\"updated_at\":\"2026-03-12T20:52:29.000000Z\",\"created_at\":\"2026-03-12T20:52:29.000000Z\",\"id\":3}}"
+            }
+          ]
+        },
+        {
+          "name": "Cadastro de Cliente",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/clients",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Cadastro de Cliente",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"João Silva\",\r\n    \"email\": \"João@email.com\",\r\n    \"cpf\": \"12345678901\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/clients",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "clients"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "connection",
+                  "value": "close",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.5.3",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "date",
+                  "value": "Thu, 12 Mar 2026 21:16:36 GMT",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:3000",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "access-control-allow-credentials",
+                  "value": "true",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "body": "{\"message\":\"Cliente cadastrado com sucesso!!!\",\"data\":{\"name\":\"Jo\\u00e3o Silva\",\"email\":\"Jo\\u00e3o@email.com\",\"cpf\":\"12345678901\",\"updated_at\":\"2026-03-12T21:16:36.000000Z\",\"created_at\":\"2026-03-12T21:16:36.000000Z\",\"id\":1}}"
+            }
+          ]
+        }
+      ],
+      "description": "Grupo de requisições para cadastros."
+    },
+    {
+      "name": "Checkout",
+      "item": [
+        {
+          "name": "Checkout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/checkout",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "checkout"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Checkout",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"client_id\":1,\r\n    \"products\":[\r\n        {\r\n            \"id\":1,\r\n            \"amount\":2\r\n        }\r\n    ],\r\n    \"cardNumber\":\"1234567890123456\",\r\n    \"cvv\":\"010\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/checkout",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "checkout"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "connection",
+                  "value": "close",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.5.3",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 13 Mar 2026 17:01:29 GMT",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:3000",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "access-control-allow-credentials",
+                  "value": "true",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "body": "{\"message\":\"Pagamento aprovado via Gateway 1\",\"transaction\":{\"client_id\":1,\"total_amount\":399.8,\"status\":\"paid\",\"updated_at\":\"2026-03-13T17:01:29.000000Z\",\"created_at\":\"2026-03-13T17:01:29.000000Z\",\"id\":6,\"external_id\":\"5a498c60-3770-4b16-b6b8-252f51fa2080\",\"gateway_id\":1,\"client\":{\"id\":1,\"name\":\"Jo\\u00e3o Silva\",\"email\":\"Jo\\u00e3o@email.com\",\"cpf\":\"12345678901\",\"created_at\":\"2026-03-12T21:16:36.000000Z\",\"updated_at\":\"2026-03-12T21:16:36.000000Z\"},\"products\":[{\"id\":1,\"name\":\"Curso de laravel\",\"price\":\"199.90\",\"amount\":0,\"created_at\":\"2026-03-12T20:47:23.000000Z\",\"updated_at\":\"2026-03-12T20:47:23.000000Z\",\"pivot\":{\"transaction_id\":6,\"product_id\":1,\"quantity\":2,\"unit_price\":\"199.90\",\"created_at\":\"2026-03-13T17:01:29.000000Z\",\"updated_at\":\"2026-03-13T17:01:29.000000Z\"}}]}}"
+            }
+          ]
+        }
+      ],
+      "description": "Aqui esta localizado a principal requisição que realiza as transações do sistema."
+    },
+    {
+      "name": "Autenticação",
+      "item": [
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();\r\npm.environment.set(\"token\", jsonData.access_token);"
+                ]
+              },
+              "disabled": false
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"admin@teste.com\",\r\n    \"password\": \"password\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/login",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "connection",
+                  "value": "close",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.5.3",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "date",
+                  "value": "Thu, 12 Mar 2026 20:53:57 GMT",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:3000",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "access-control-allow-credentials",
+                  "value": "true",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "body": "{\"access_token\":\"4|siPXUGRZqAMYVkFMffL1jVPZgHVtKQ83mbftJsGubbae7672\",\"token_type\":\"Bearer\"}"
+            }
+          ]
+        }
+      ],
+      "description": "Aqui esta localizado a requisição de login de usuário."
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string",
+      "disabled": true
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+$kind: http-request
+url: "{{base_url}}/login"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: ""
+scripts:
+  - type: afterResponse
+    code: "var jsonData = pm.response.json();\r
+
+      pm.environment.set(\"token\", jsonData.access_token);"
+    language: text/javascript
+examples: ./.resources/Login.resources/examples
+order: 1000

@@ -1,20 +1,10 @@
 $kind: http-request
-name: Cadastro de Produtos
-description: Este endpoint Cadastra produtos, tente enviar (name, price, amount)
 url: "{{base_url}}/products"
 method: POST
 headers:
   Accept: application/json
 body:
   type: json
-  content: "{\r
-
-    \    \"name\": \"Curso de Laravel\",\r
-
-    \    \"price\": 55.5,\r
-
-    \    \"amount\": 50\r
-
-    }"
-order: 1773348711084
-examples: ./.resources\Cadastro de Produtos.resources\examples
+  content: ""
+examples: ./.resources/Cadastro de Produtos.resources/examples
+order: 1000
